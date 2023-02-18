@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Calculator</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        body{
+            background-image: url(./backgroundforcal.jpg);
+            background-size: 100%;
+            background-position: 0px -450px;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #container{
+            position: relative;
+            width: 40%;
+            height: 80%;
+            background-color: rgba(0, 0, 0, 0.534);
+            border-radius: 2%;
+            box-shadow: 5px 5px 5px black;
+        }
+        #display{
+            width: 75%;
+            height: 30px;
+            position: absolute;
+            top:5%;
+            left: 9%;
+            background-color: black;
+            color: white;
+            font-size: 25px;
+            padding: 5px;
+            outline: none;
+            border: groove 10px gray;
+            box-shadow: 2px 2px 5px black;
+        }
+        .a{
+            top: 15vh;
+            left: 5vw;
+            margin-top: 20px;
+            position: relative;
+            width: 15%;
+            height: 6vh;
+            background-color: black;
+            color: white;
+            font-size: 24px;
+            border-radius:5px;
+            box-shadow: 2px 2px 2px black;
+            border: 2px solid white;
+        }
+        #clear{
+            position: absolute;
+            bottom: 20%;
+            left: 5vw;
+            background-color: black;
+            color: white;
+            width: 30%;
+            height: 6vh;
+            font-size: 24px;
+            border-radius:5px;
+            box-shadow: 2px 2px 2px black;
+            border: 2px solid white;
+        }
+        #equ{
+            position: absolute;
+            bottom: 20%;
+            left: 18vw;
+            background-color: black;
+            color: white;
+            width: 30%;
+            height: 6vh;
+            font-size: 24px;
+            border-radius:5px;
+            box-shadow: 2px 2px 2px black;
+            border: 2px solid white;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <form name="cform">
+            <input name="Ans" id="display">
+            <br>
+            <input type="button" onmousedown="clicksound()" onmouseup="mouseup()" class="a" id="one" value="1" onclick="cform.Ans.value += '1'">
+            <input type="button" onmousedown="two()" onmouseup="mouseup()" class="a" id="second" value="2" onclick="cform.Ans.value += '2'">
+            <input type="button" onmousedown="three()" onmouseup="mouseup()" class="a" id="third" value="3" onclick="cform.Ans.value += '3'">
+            <input type="button" onmousedown="plus()" onmouseup="mouseup()" class="a" id="add" value="+" onclick="cform.Ans.value += '+'">
+            <br>
+            <input type="button" onmousedown="four()" onmouseup="mouseup()" id="fourth" class="a" value="4" onclick="cform.Ans.value += '4'">
+            <input type="button" onmousedown="five()" onmouseup="mouseup()" id="fifth" class="a" value="5" onclick="cform.Ans.value += '5'">
+            <input type="button" onmousedown="six()" onmouseup="mouseup()" id="sixth" class="a" value="6" onclick="cform.Ans.value += '6'">
+            <input type="button" onmousedown="sub()" onmouseup="mouseup()" id="minus" class="a" value="-" onclick="cform.Ans.value += '-'">
+            <br>
+            <input type="button" onmousedown="seven()" onmouseup="mouseup()" id="sev" class="a" value="7" onclick="cform.Ans.value += '7'">
+            <input type="button" onmousedown="eight()" onmouseup="mouseup()" id="eig" class="a" value="8" onclick="cform.Ans.value += '8'">
+            <input type="button" onmousedown="nine() " onmouseup="mouseup()" id="nin" class="a" value="9" onclick="cform.Ans.value += '9'">
+            <input type="button" onmousedown="mul()  " onmouseup="mouseup()" id="multiplication" class="a" value="x" onclick="cform.Ans.value += '*'">
+            <br>
+            <input type="button" onmousedown="mod()" onmouseup="mouseup()" id="modu" class="a" value="%" onclick="cform.Ans.value += '%'">
+            <input type="button" onmousedown="zero()" onmouseup="mouseup()" id="zeo" class="a" value="0" onclick="cform.Ans.value += '0'">
+            <input type="button" onmousedown="dot()" onmouseup="mouseup()" id="do" class="a" value="." onclick="cform.Ans.value += '.'">
+            <input type="button" onmousedown="div()" onmouseup="mouseup()" id="divi" class="a" value="/" onclick="cform.Ans.value += '/'">
+            <br>
+            <input type="button"  id="equ" value="=" onclick="cform.Ans.value = eval(cform.Ans.value)" onmouseup="mouseup()" onmousedown="equal()">
+            <input type="button" id="clear" value="C" onclick="cform.Ans.value = ' '" onmousedown="clicksoundclear()" onmouseup="mouseup()">
+        </form>
+    </div>
+    <script>
+        function clicksound()
+        {
+            var sound = new Audio()
+            sound.src="touchsound.mp3"
+            sound.play()
+            document.getElementById("one").style.backgroundColor="brown"
+        }
+        function clicksoundclear()
+        {
+            var ma = new Audio()
+            ma.src="touchsound.mp3"
+            ma.play()
+            document.getElementById("clear").style.backgroundColor="aqua"
+        }
+        function two()
+        {
+            var maa = new Audio()
+            maa.src="touchsound.mp3"
+            maa.play()
+            document.getElementById("second").style.backgroundColor="blanchedalmond"
+        }
+        function three()
+        {
+            var maa = new Audio()
+            maa.src="touchsound.mp3"
+            maa.play()
+            document.getElementById("third").style.backgroundColor="azure"
+        }
+        function plus()
+        {
+            var maa = new Audio()
+            maa.src="touchsound.mp3"
+            maa.play()
+            document.getElementById("add").style.backgroundColor="beige"
+        }
+        function four()
+        {
+            var maa = new Audio()
+            maa.src="touchsound.mp3"
+            maa.play()
+            document.getElementById("fourth").style.backgroundColor="bisque"
+        }
+        function five()
+        {
+            var maa = new Audio()
+            maa.src="touchsound.mp3"
+            maa.play()
+            document.getElementById("fifth").style.backgroundColor="wheat"
+        }
+        function six()
+        {
+            var maa = new Audio()
+            maa.src="touchsound.mp3"
+            maa.play()
+            document.getElementById("sixth").style.backgroundColor="rebeccapurple"
+        }
+        function sub()
+        {
+            var maa = new Audio()
+            maa.src="touchsound.mp3"
+            maa.play()
+            document.getElementById("minus").style.backgroundColor="ivory"
+        }
+        function seven()
+        {
+            var maa = new Audio()
+            maa.src="touchsound.mp3"
+            maa.play()
+            document.getElementById("sev").style.backgroundColor="tan"
+        }
+        function eight()
+        {
+            var maa = new Audio()
+            maa.src="touchsound.mp3"
+            maa.play()
+            document.getElementById("eig").style.backgroundColor="oldlace"
+        }
+        function nine()
+        {
+            var maa = new Audio()
+            maa.src="touchsound.mp3"
+            maa.play()
+            document.getElementById("nin").style.backgroundColor="olive"
+        }
+        function mul()
+        {
+            var maa = new Audio()
+            maa.src="touchsound.mp3"
+            maa.play()
+            document.getElementById("multiplication").style.backgroundColor="orange"
+        }
+        function mod()
+        {
+            var maa = new Audio()
+            maa.src="touchsound.mp3"
+            maa.play()
+            document.getElementById("modu").style.backgroundColor="red"
+        }
+        function zero()
+        {
+            var maa = new Audio()
+            maa.src="touchsound.mp3"
+            maa.play()
+            document.getElementById("zeo").style.backgroundColor="pink"
+        }
+        function dot()
+        {
+            var maa = new Audio()
+            maa.src="touchsound.mp3"
+            maa.play()
+            document.getElementById("do").style.backgroundColor="blue"
+        }
+        function div()
+        {
+            var maa = new Audio()
+            maa.src="touchsound.mp3"
+            maa.play()
+            document.getElementById("divi").style.backgroundColor="hotpink"
+        }
+        function equal()
+        {
+            var maa = new Audio()
+            maa.src="touchsound.mp3"
+            maa.play()
+            document.getElementById("equ").style.backgroundColor="palevioletred"
+        }
+        function mouseup()
+        {
+            document.getElementById("second").style.backgroundColor="black"
+            document.getElementById("one").style.backgroundColor="black"
+            document.getElementById("third").style.backgroundColor="black"
+            document.getElementById("add").style.backgroundColor="black"
+            document.getElementById("fourth").style.backgroundColor="black"
+            document.getElementById("fifth").style.backgroundColor="black"
+            document.getElementById("sixth").style.backgroundColor="black"
+            document.getElementById("minus").style.backgroundColor="black"
+            document.getElementById("clear").style.backgroundColor="black"
+            document.getElementById("sev").style.backgroundColor="black"
+            document.getElementById("eig").style.backgroundColor="black"
+            document.getElementById("nin").style.backgroundColor="black"
+            document.getElementById("clear").style.backgroundColor="black"
+            document.getElementById("modu").style.backgroundColor="black"
+            document.getElementById("zeo").style.backgroundColor="black"
+            document.getElementById("do").style.backgroundColor="black"
+            document.getElementById("divi").style.backgroundColor="black"
+            document.getElementById("multiplication").style.backgroundColor="black"
+            document.getElementById("equ").style.backgroundColor="black"
+        }
+    </script> 
+</body>
+</html>
